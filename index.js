@@ -1,7 +1,5 @@
 const fse = require("fs-extra");
-const Shapes = require("./lib/shapes");
-
-console.log(typeof Shapes.Circle);
+const { Triangle, Circle, Square } = require("./lib/shapes");
 
 const inquirer = require("inquirer");
 
@@ -30,4 +28,4 @@ function init() {
     .then();
 }
 
-init();
+// init();
