@@ -21,7 +21,7 @@ function init() {
         message: "Enter the color you want the logo to be.",
       },
       {
-        type: "choices",
+        type: "list",
         name: "shape",
         message: "Select the shape you want the logo to be.",
         choices: ["circle", "triangle", "square"],
