@@ -9,7 +9,7 @@ function init() {
     .prompt([
       {
         type: "input",
-        name: "characters",
+        name: "text",
         message:
           "Enter up to three characters. The characters will be placed in the center of the logo.",
       },
@@ -25,7 +25,28 @@ function init() {
         choices: ["circle", "triangle", "square"],
       },
     ])
-    .then();
+    .then((answers) => {
+      function createLogo(shape) {
+        const Logo = new shape(answers.text, answers.color);
+        fse.writeFile("./output/logo.svg", Logo.render(), (err) => {
+          if (err) {
+            console.error(err);
+          }
+        });
+      }
+
+      switch (answers.shape) {
+        case "circle":
+          createLogo(Circle);
+          break;
+        case "triangle":
+          createLogo(Triangle);
+          break;
+        case "square":
+          createLogo(Square);
+          break;
+      }
+    });
 }
 
-// init();
+init();
